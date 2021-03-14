@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- faq-banner -->
+	<div class="faq">
+			<div class="container">
+				<div class="agileits-news-top">
+					<ol class="breadcrumb">
+					  <li><a href="index.html">Home</a></li>
+					   <li><a href="news.html">News</a></li>
+					  <li class="active">{{news.title}} </li>
+					</ol>
+				</div>
+				<div class="agileinfo-news-top-grids">
+					<div class="col-md-8 wthree-top-news-left">
+						<div class="wthree-news-left">
+							<div class="wthree-news-left-img">
+								<img src="{{news.image.url}}" alt="" />
+								<h4>{{news.title}}</h4>
+								<div class="s-author">
+									<p>Posted By <a href="#"><i class="fa fa-user" aria-hidden="true"></i> {{news.author}}</a> &nbsp;&nbsp; <i class="fa fa-calendar" aria-hidden="true"></i> {{news.date}} &nbsp;&nbsp; </p>
+								</div>
+								<div id="fb-root"></div>
+								<div class="w3-agile-news-text">
+									{% autoescape off %}
+									{{news.desc}}
+									{% endautoescape %}
+									</p>
+								</div>
+							</div>
+						</div>
+					<!-- 	<div class="wthree-related-news-left">
+							<h4>Related News</h4>
+							<div class="wthree-news-top-left">
+								<div class="col-md-6 w3-agileits-news-left">
+									<div class="col-sm-5 wthree-news-img">
+										<a href="news-single.html"><img src="images/m1.jpg" alt="" /></a>
+									</div>
+									<div class="col-sm-7 wthree-news-info">
+										<h5><a href=""></a></h5>
+										<p>Sed tristique mattis fermentum. Etiam semper aliquet massa, id tempus massa mattis eget.</p>
+										<ul>
+											<li><i class="fa fa-clock-o" aria-hidden="true"></i> 24/09/2016</li>
+											<li><i class="fa fa-eye" aria-hidden="true"></i> 2642</li>
+										</ul>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+								<div class="col-md-6 w3-agileits-news-left">
+									<div class="col-sm-5 wthree-news-img">
+										<a href="news-single.html"><img src="images/m2.jpg" alt="" /></a>
+									</div>
+									<div class="col-sm-7 wthree-news-info">
+										<h5><a href="news-single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
+										<p>Sed tristique mattis fermentum. Etiam semper aliquet massa, id tempus massa mattis eget.</p>
+										<ul>
+											<li><i class="fa fa-clock-o" aria-hidden="true"></i> 24/09/2016</li>
+											<li><i class="fa fa-eye" aria-hidden="true"></i> 2642</li>
+										</ul>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="news-related">
+							
+						</div> -->
+					</div>
+					<div class="col-md-4 wthree-news-right">
+						<!-- news-right-top -->
+						<div class="news-right-top">
+							<div class="wthree-news-right-heading">
+								<h3>Updated News</h3>
+							</div>
+							<div class="wthree-news-right-top">
+								<div class="news-grids-bottom">
+									<!-- date -->
+									<div id="design" class="date">
+										<div id="cycler">   
+											<div class="date-text">
+												{% for r_n in related_news %}
+												<a href="{% url 'movie:news_detail' r_n.slug %}">{{r_n.date}}</a>
+												{% autoescape off %}
+												<p><a href="{% url 'movie:news_detail' r_n.slug %}">{{r_n.desc}}</a></p>
+												{% endautoescape %}
+												{% endfor %}
+											</div>
+											
+										</div>
+										<script>
+										function blinker() {
+											$('.blinking').fadeOut(500);
+											$('.blinking').fadeIn(500);
+										}
+										setInterval(blinker, 1000);
+										</script>
+										<script>
+											function cycle($item, $cycler){
+												setTimeout(cycle, 2000, $item.next(), $cycler);
+												
+												$item.slideUp(1000,function(){
+													$item.appendTo($cycler).show();        
+												});
+												}
+											cycle($('#cycler div:first'),  $('#cycler'));
+										</script>
+									</div>
+									<!-- //date -->
+								</div>
+							</div>
+						</div>
+						<!-- //news-right-top -->
+						<!-- news-right-bottom -->
+						<div class="news-right-bottom">
+							<div class="wthree-news-right-heading">
+								<h3>Top News</h3>
+							</div>
+							<div class="news-right-bottom-bg">
+								<div class="news-grids-bottom">
+									<div class="top-news-grid">
+										<div class="top-news-grid-heading">
+											<a href="news-single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rutrum ac nulla</a>
+										</div>
+										<div class="w3ls-news-t-grid top-t-grid">
+											<ul>
+												<li><a href="#"><i class="fa fa-clock-o"></i> 1h</a></li>
+												<li><a href="#"><i class="fa fa-user"></i> Vivamus nibh</a></li>
+											</ul>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!-- //news-right-bottom -->
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+
+	</div>
+<!-- //faq-banner -->
+{% endblock %}

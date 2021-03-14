@@ -1,0 +1,24 @@
+							<script>
+								function AddLikes(movie_id){
+									if (window.XMLHttpRequest){
+										xmlhttp=new XMLHttpRequest();
+									} else{ xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");}
+									xmlhttp.onreadystatechange=function(){
+										if (this. readyState==4 && this.status==200){
+											var date = JSON.parse(this.responseText);
+											console.log(data);
+										if (data.status == 'OK'){
+											console.log('Done')
+										}
+										else{
+										console.log('Error')
+										}
+									}
+								}
+								var url = "{% url 'movie:like_count'%}";
+								var url = url+"?data"+movie_id;
+
+								xmlhttp.open("GET",url,true);
+								xmlhttp.send()
+							}
+							</script>

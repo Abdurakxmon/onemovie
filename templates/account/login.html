@@ -1,0 +1,44 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        Sign In
+      </div>
+      <section>
+        <div class="modal-body">
+          <div class="w3_login_module">
+            <div class="module form-module">
+              <div class="toggle""> <a class="fa fa-times fa-pencil" href="{{ signup_url }}"></a>
+              <div class="tooltip"> <a href="{{ signup_url }}" style="color:#fff;">Click Me</a></div>
+              </div>
+              <div class="form">
+              <h3>{% trans "Log in"%}</h3>
+              <form action="{% url 'account_login' %}" method="post" class="login">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <input type="submit" value="{% trans "Sign In" %}">
+              </form>
+              </div>
+              <div class="cta button secondaryAction"><a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="general_social_icons">
+	<nav class="social">
+		<ul>
+			<li class="w3_twitter"><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
+			<li class="w3_facebook"><a href="#">Facebook <i class="fa fa-facebook"></i></a></li>
+			<li class="w3_dribbble"><a href="#">Dribbble <i class="fa fa-dribbble"></i></a></li>
+			<li class="w3_g_plus"><a href="#">Google+ <i class="fa fa-google-plus"></i></a></li>
+		</ul>
+  </nav>
+</div>
+<!-- faq-banner -->
+	<div class="faq">
+		<h4 class="latest-text w3_faq_latest_text w3_latest_text">Movies List</h4>
+			<div class="container">
+				<div class="agileits-news-top">
+					<ol class="breadcrumb">
+					  <li><a href="{% url 'movie:movies_list' %}">Bosh menyu</a></li>
+					  <li class="active">O'zbek kinolar</li>
+					</ol>
+
+				</div>
+				<div>
+
+					{% for movie in page_obj %}
+					<div class="col-md-2 w3l-movie-gride-agile">
+								<a href="{{movie.get_movie}}" class="hvr-shutter-out-horizontal"><img src="{{movie.poster.url}}" title="album-name" class="img-responsive" alt=" " />
+									<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+								</a>
+								<div class="mid-1 agileits_w3layouts_mid_1_home">
+									<div class="w3l-movie-text">
+										<h6><a href="{{movie.get_movie}}">{{movie.title}}</a></h6>
+									</div>
+									<div class="mid-2 agile_mid_2_home">
+										<p>{{movie.year}}</p>
+										<div class="block-stars">
+											<ul class="w3l-ratings">
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+
+							</div>
+					{% endfor %}
+				</div>
+
+
+			</div>
+
+
+	</div>
+	{% if page_obj.paginator %}
+	<div class="" style="">
+		<ul class="pagination">
+			{% if page_obj.has_previous %}
+				<li class="page-item"><a href="?page=1" class="page-link" >Oldingi</a></li>
+<!-- 				<li class="page-item"><a href="?page={{ page_obj.previous_page_number }}"></a></li> -->
+			{% else %}
+				<li class="disabled"><a href="" class="disabled" >Oldingi</a></li>
+			{% endif %}
+
+			{% for page in page_obj.paginator %}
+			<li class="page-item"><a class="page-link" href="?page={{page.number}}">{{page.number}}</a></li>
+			{% endfor %}
+
+			{% if page_obj.has_next %}
+				<li class="page-item"><a href="?page={{ page_obj.next_page_number }}">keyingi</a></li>
+<!-- 				<li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}"></a></li> -->
+			{% else %}
+				<li class="disabled"><a href="" class="disabled">keyingi</a></li>
+			{% endif %}
+
+		</ul>
+	</div>
+	{% else %}
+	<div></div>
+	{% endif %}
+<!-- //faq-banner -->
+{% endblock %}

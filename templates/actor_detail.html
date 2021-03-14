@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- single -->
+<div class="single-page-agile-main">
+<div class="container">
+		<!-- /w3l-medile-movies-grids -->
+			<div class="agileits-single-top">
+				<ol class="breadcrumb">
+				  <li><a href="{% url 'movie:movies_list' %}">Bosh sahifa</a></li>
+				  <li class="active">{{ actor.name.upper }}  haqida</li>
+				</ol>
+			</div>
+			<div class="single-page-agile-info">
+                   <!-- /movie-browse-agile -->
+                <div class="show-top-grids-w3lagile">
+				<div class="col-sm-8 single-left">
+					<div class="song">
+						<div class="song-info">
+							<h3>{{ actor.name.upper }}</h3>
+					</div>
+						<div class="video-grid-single-page-agileits" style="width: 75%; height: auto;">
+							<div data-video="dLmKio67pVQ" id="video">
+							<img src="{{actor.image.url}}" alt="" class="img-responsive" /> </div>
+						</div>
+					</div>
+
+					<div class="clearfix"> </div>
+					<!-- <h3>Actors</h3>
+					<div class="w3_agile_banner_bottom_grid">
+						<div id="owl-demo" class="owl-carousel owl-theme">
+							{% for actor in movie.actors.all %}
+							<div class="item">
+								<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+									<a href="" class="hvr-shutter-out-horizontal"><img src="{{actor.image.url}}" title="album-name" class="img-responsive" alt=" ">
+									</a>
+									<div class="mid-1 agileits_w3layouts_mid_1_home">
+										<div class="w3l-movie-text">
+											<h6><a href="">{{actor.name}}</a></h6>
+										</div>
+									</div>
+								</div>
+								</div>
+								{% endfor %}
+								</div>
+
+					</div> -->
+					
+
+					<div class="clearfix"> </div>
+
+
+				</div>
+				<div class="col-md-4 single-right">
+					<h3>Aktyor haqida</h3>
+					<div class="single-grid-right">
+						<p>Ismi: {{actor.name}}</p>
+						{% autoescape off %}
+						<p>Karyera: {{actor.karyera}}</p>
+						{% endautoescape %}
+						<p>Tug'ilgan kuni: {{actor.birth}}</p>
+						<p>Millati: {{actor.nation}}</p>
+						<p>Tili: {{actor.lang}}</p>
+						<p>Ma'lumotlar:
+						{% autoescape off %}
+						{{actor.desc}}
+						{% endautoescape %}</p>
+	
+					</div>
+					<div class="single-grid-right">
+						<h4>Boshqa Aktyorlar</h4>
+						{% for actor in l_actors %}
+						<div class="single-right-grids">
+							<div class="col-md-4 single-right-grid-left">
+								<a href="{{actor.get_actor}}"><img src="{{actor.image.url}}" alt=""></a>
+							</div>
+							<div class="col-md-8 single-right-grid-right">
+
+								<a href="{{actor.get_actor}}" class="title">{{actor.title}}</a>
+								<p class="author"><a href="{{actor.get_actor}}" class="author">{{actor.name}}</a></p>
+								<p class="author"><a href="{{actor.get_actor}}" class="author">{{actor.nation}}</a></p>
+								<p class="author"><a href="{{actor.get_actor}}" class="author">{{actor.country}}</a></p>
+								<p class="author"><a href="{{actor.get_actor}}" class="author">{{actor.boyi}} sm</a></p>
+<!-- 
+								{% for actor in movie.actors.all|slice:":2"%}
+								<p class="views" >
+									{{actor.name}}
+								</p>
+								{% endfor %} -->
+
+
+						<!-- 		<p class="views">{{movie.world_premiere}}</p> -->
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+
+
+
+				<div class="clearfix"> </div>
+			</div>
+				<!-- //movie-browse-agile -->
+				<!--body wrapper start-->
+			<div class="w3_agile_banner_bottom_grid">
+				<div id="owl-demo" class="owl-carousel owl-theme">
+					{% for actor_m in movie.actor.movie %}
+					<p>{{ actor_m.title }}</p>
+					{% endfor %}
+					<div class="item">
+						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+							<a href="single.html" class="hvr-shutter-out-horizontal"><img src="images/m13.jpg" title="album-name" class="img-responsive" alt=" " />
+								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+							</a>
+							<div class="mid-1 agileits_w3layouts_mid_1_home">
+								<div class="w3l-movie-text">
+									<h6><a href="single.html">Citizen Soldier</a></h6>
+								</div>
+								<div class="mid-2 agile_mid_2_home">
+									<p>2016</p>
+									<div class="block-stars">
+										<ul class="w3l-ratings">
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="ribben">
+								<p>NEW</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		<!--body wrapper end-->
+
+
+				</div>
+				<!-- //w3l-latest-movies-grids -->
+			</div>
+		</div>
+	<!-- //w3l-medile-movies-grids -->
+
+{% endblock %}

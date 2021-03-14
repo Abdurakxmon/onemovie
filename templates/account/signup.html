@@ -1,0 +1,41 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+    Sign Up
+    </div>
+    <section>
+      <div class="modal-body">
+        <div class="w3_login_module">
+          <div class="module form-module">
+            <div class="toggle"><a class="fa fa-times fa-pencil" href="{{ login_url }}"></a>
+            <div class="tooltip"><a href="{{ login_url }}" style="color:#fff;">{% trans "Click Me" %}</a></div>
+            </div>
+            <div class="form">
+            <h3>Create an account</h3>
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <input type="submit" value="{% trans "Sign Up" %}">
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+{% endblock %}
