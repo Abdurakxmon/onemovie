@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'onemovie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME' : 'onemovie_flash',
-        'USER' : 'postgres',
-        'PASSWORD' : 'abdurahmon',
+        'NAME' : ' --- name --- ',
+        'USER' : ' --- user --- ',
+        'PASSWORD' : ' --- password --- ',
         'HOST' : 'localhost',
         'PORT' : '5432'
     }
@@ -170,6 +170,6 @@ AUTHENTICATION_BACKENDS = (
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "fortesting2006@mail.ru"
-EMAIL_HOST_PASSWORD = "901420225a"
+EMAIL_HOST_USER = " --- mail --- "
+EMAIL_HOST_PASSWORD = " --- code --- "
 EMAIL_USE_TLS = True
