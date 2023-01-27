@@ -1,1 +1,1 @@
-posgreysql!
+Edit settings.py before run!
